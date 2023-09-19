@@ -14,4 +14,6 @@ add_executable(Estruct_Comp
         Pais.h
         Pais.hxx
         Risk.h
-        Risk.hxx Tarjeta.h Tarjeta.hxx Comodin.h Comodin.hxx)
+        Risk.hxx Tarjeta.h Tarjeta.hxx Comodin.h Comodin.hxx
+        Ficha.h
+        Ficha.hxx)
