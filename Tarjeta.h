@@ -5,20 +5,21 @@
 #ifndef ESTRUCT_COMP_TARJETA_H
 #define ESTRUCT_COMP_TARJETA_H
 
-#include <string>
+
+#include "Ficha.h"
 
 class Tarjeta{
 private:
     int idTarjeta;
     std::string territorio;
-    int infanterias;
+    Ficha ficha;
     int colorOcupacion;
 
 public:
-    Tarjeta(int idTarjeta, const std::string &territorio, int infanterias, int colorOcupacion) : idTarjeta(idTarjeta),
+    Tarjeta(int idTarjeta, const std::string &territorio, Ficha ficha, int colorOcupacion) : idTarjeta(idTarjeta),
                                                                                                  territorio(territorio),
-                                                                                                 infanterias(
-                                                                                                         infanterias),
+                                                                                                 ficha(
+                                                                                                         ficha),
                                                                                                  colorOcupacion(
                                                                                                          colorOcupacion) {}
 
@@ -38,13 +39,9 @@ public:
         Tarjeta::territorio = territorio;
     }
 
-    int getInfanterias() const {
-        return infanterias;
-    }
+    const Ficha &getFicha() const;
 
-    void setInfanterias(int infanterias) {
-        Tarjeta::infanterias = infanterias;
-    }
+    void setFicha(const Ficha &ficha);
 
     int getColorOcupacion() const {
         return colorOcupacion;
