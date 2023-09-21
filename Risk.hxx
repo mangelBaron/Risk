@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include "Risk.h"
 #include <fstream>
+#include <sstream>
 
 
-  void Risk::inicializar(){
+void Risk::inicializar(){
     int cantidadJugadores;
     int cantidadFichas;
     bool flag;
@@ -1038,18 +1039,14 @@ int Risk::lanzarDado() {
     return aux;
   }
 
-  void Risk::guardarPartida(){
+  void Risk::guardarPartida(std::string nombreArchivo){
     int cantidadJugadores = jugadores.size();
-    std::string nombreArchivo;
+
     int contador =0;
 
 
-    std::cout<<"Digite el nombre de la partida"<<std::endl;
-        std::cin>>nombreArchivo;
 
-        std::string txt = ".txt";
 
-        nombreArchivo.append(txt);
 
 
         std::fstream archivo;
@@ -1093,6 +1090,66 @@ int Risk::lanzarDado() {
         return;
 }
 
+void Risk::inicializarArchivo(std::string nombreArchivo) {
+
+
+    std::ifstream archivo(nombreArchivo, std::ios::in);
+
+    if (!archivo.is_open()) {
+        std::cout << "(Archivo vacío o incompleto) " << nombreArchivo
+                  << " no contiene información válida para inicializar el juego." << std::endl;
+        return;
+    }
+
+    // Limpiar la lista de jugadores existente antes de agregar los nuevos
+    jugadores.clear();
+
+    std::string linea;
+
+    // Leer la primera línea para obtener la cantidad de jugadores
+    std::getline(archivo, linea);
+    int cantidadJugadores = 0;
+    if (linea.find("Cantidad de jugadores: ") != std::string::npos) {
+        cantidadJugadores = std::stoi(linea.substr(23)); // Obtener el número después de la cadena fija
+    }
+
+    // Leer información de jugadores y agregarlos a la lista
+    for (int i = 0; i < cantidadJugadores; ++i) {
+        Jugador jugador;
+
+        // Leer idJugador
+        std::getline(archivo, linea);
+        if (linea.find("idJugador: ") != std::string::npos) {
+            jugador.setIdJugador(std::stoi(linea.substr(12))); // Obtener el número después de la cadena fija
+        }
+
+        // Leer nombre
+        std::getline(archivo, linea);
+        if (linea.find("nombre: ") != std::string::npos) {
+            jugador.setNombre(linea.substr(8)); // Obtener el nombre después de la cadena fija
+        }
+
+        // Leer color
+        std::getline(archivo, linea);
+        if (linea.find("color: ") != std::string::npos) {
+            jugador.setColor(std::stoi(linea.substr(7))); // Obtener el número después de la cadena fija
+        }
+
+        // Leer unidadesInfanteria
+        std::getline(archivo, linea);
+        if (linea.find("unidadesInfanteria: ") != std::string::npos) {
+            jugador.setUnidadesInfanteria(std::stoi(linea.substr(20))); // Obtener el número después de la cadena fija
+        }
+
+        // Agregar el jugador a la lista
+        jugadores.push_back(jugador);
+    }
+
+    // Resto de la información...
+    archivo.close();
+    inicio_J = true;
+    std::cout << "Los datos del archivo " << nombreArchivo << " han sido cargados correctamente!" << std::endl;
+}
 
 
 #endif

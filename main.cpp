@@ -24,9 +24,26 @@ int main() {
       std::string numero ;
       std::string consolaTurno;
 
+      std::string consolaInicializar;
+      std::string nombreArchivoInicializar;
+
+      std::string consolaGuardar;
+      std::string nombreArchivoGuardar;
+
+
+
+
         std::cout<<std::endl<<"$ ";
         getline(std::cin, consola);
         std::cout<<std::endl;
+        std::string consolaCopia= consola;
+        std::string consolaCopia2= consola;
+
+        consolaInicializar = consola.substr(0, 11);
+        nombreArchivoInicializar = consolaCopia.erase(0,12);
+
+        consolaGuardar = consola.substr(0, 7);
+        nombreArchivoGuardar = consolaCopia2.erase(0, 8);
      
       if(consola == "turno 1" || consola == "turno 2"||consola == "turno 3"|| consola == "turno 4"|| consola == "turno 5"|| consola == "turno 6"){
 if (!consola.empty()) {
@@ -49,6 +66,8 @@ if (!consola.empty()) {
       }else if(consolaTurno == "turno" && numero == "6"){
         numeroTurno = 6;
       }
+
+
 
         if(consola == "help"){
             std::cout<<"Estos son los comandos disponibles, digite help <comando deseado> para conocer la funcion del comando:"<<std::endl;
@@ -94,11 +113,15 @@ Risk1.turno(numeroTurno);
             std::cout<<"Comando exitoso!"<<std::endl;
         }else if(consola =="salir"){
            
-        }else if(consola=="guardar"){
+        }else if(consolaGuardar=="guardar" && nombreArchivoGuardar == consolaCopia2){
            if(Risk1.inicio_J == false){
               std::cout<<" (Juego no inicializado) Esta partida no ha sido inicializada correctamente."<<std::endl;
            }else{
-               Risk1.guardarPartida();
+
+               std::string txt = ".txt";
+               nombreArchivoGuardar.append(txt);
+
+               Risk1.guardarPartida(nombreArchivoGuardar);
            }
 
         }else if(consola =="inicializar"){
@@ -112,7 +135,18 @@ Risk1.turno(numeroTurno);
             std::cout<<"Comando exitoso!"<<std::endl;
         }else if(consola =="costo_conquista"){
             std::cout<<"Comando exitoso!"<<std::endl;
-        }else{
+        }else if(consolaInicializar == "inicializar" && nombreArchivoInicializar == consolaCopia){
+            if(Risk1.inicio_J == true){
+                std::cout<<"(Juego en curso) El juego ya ha sido inicializado."<<std::endl;
+            }else{
+
+                std::string txt = ".txt";
+                nombreArchivoInicializar.append(txt);
+
+                Risk1.inicializarArchivo(nombreArchivoInicializar);
+            }
+
+        } else{
             std::cout<<"Error: '"<<consola<<"' no es un comando, use help para conocer los comandos disponibles."<<std::endl;
         }
 

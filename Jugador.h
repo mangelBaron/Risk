@@ -44,6 +44,12 @@ public:
       cartas = ncartas;
     }
 
+    void setIdJugador(int idJugador);
+
+    void setNombre(const std::string &nombre);
+
+    void setColor(int color);
+
     int getCartas(){
       return cartas;
     }

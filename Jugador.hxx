@@ -20,6 +20,18 @@ std::string Jugador::displayInfo() {
 
     return info;
 }
-    
+
+void Jugador::setIdJugador(int idJugador) {
+    Jugador::idJugador = idJugador;
+}
+
+void Jugador::setNombre(const std::string &nombre) {
+    Jugador::nombre = nombre;
+}
+
+void Jugador::setColor(int color) {
+    Jugador::color = color;
+}
+
 
 #endif

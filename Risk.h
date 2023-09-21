@@ -30,10 +30,8 @@ public:
     std::list<Pais>::iterator seleccionTerrenoColindante(std::list<Pais>::iterator itdorDominio);
     std::list<Pais>::iterator seleccionTerrenoColindanteEnemigo(std::list<Pais>::iterator itdorDominio);
     std::list<Pais>::iterator seleccionDominio(std::list<Jugador>::iterator itdorJugador);
-    void guardarPartida();
-    
-    
-    
+    void guardarPartida(std::string nombreArchivo);
+    void inicializarArchivo(std::string nombreArchivo);
 };
 
 #include "Risk.hxx"
