@@ -34,7 +34,7 @@ public:
         Comodin::colorOcupacion = colorOcupacion;
     }
 
-    void displayInfo();
+    std::string displayInfo();
 };
 
 #endif //ESTRUCT_COMP_COMODIN_H

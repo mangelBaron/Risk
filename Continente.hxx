@@ -5,12 +5,17 @@
 
 //-----------------------
   //METODOS
-  void Continente::displayInfo() {
-        std::cout << "Nombre Continente: " << nombreContinente << std::endl;
-        for (std::list<Pais>::iterator itdor = paises.begin(); itdor != paises.end();++itdor) {
-          itdor->displayInfo();
-    }  
-  }
+std::string Continente::displayInfo() {
+    std::string info;
+
+    info = "Nombre Continente: " + nombreContinente + "\n";
+
+    for (std::list<Pais>::iterator it = paises.begin(); it != paises.end(); ++it) {
+        info += it->displayInfo() + "\n";
+    }
+
+    return info;
+}
 
 
 

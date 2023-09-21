@@ -4,21 +4,17 @@
 #include <iostream>
 #include "Tarjeta.h"
 
-void Tarjeta::displayInfo() {
+std::string Tarjeta::displayInfo() {
+    std::string info;
 
-    std::cout << "id de Tarjeta:  " << idTarjeta << std::endl;
-    std::cout << "Territorio:  " << territorio << std::endl;
-    std::cout << "Ficha: " << ficha.getNombre() << std::endl;
-    std::cout << "Color de ocupación de la tarjeta: " << colorOcupacion << std::endl;
+    info = "id de Tarjeta: " + std::to_string(idTarjeta) + "\n";
+    info += "Territorio: " + territorio + "\n";
+    info += "Ficha: " + ficha.getNombre() + "\n";
+    info += "Color de ocupación de la tarjeta: " + std::to_string(colorOcupacion) + "\n";
 
+    return info;
 }
 
-const Ficha &Tarjeta::getFicha() const {
-    return ficha;
-}
 
-void Tarjeta::setFicha(const Ficha &ficha) {
-    Tarjeta::ficha = ficha;
-}
 
 #endif

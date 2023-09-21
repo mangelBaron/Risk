@@ -3,8 +3,9 @@
 #define RISK_H
 
 
-#include "Tarjeta.h"
-#include "Comodin.h"
+#include "Tarjeta.hxx"
+#include "Ficha.h"
+#include "Comodin.hxx"
 
 class Risk {
     
@@ -29,6 +30,7 @@ public:
     std::list<Pais>::iterator seleccionTerrenoColindante(std::list<Pais>::iterator itdorDominio);
     std::list<Pais>::iterator seleccionTerrenoColindanteEnemigo(std::list<Pais>::iterator itdorDominio);
     std::list<Pais>::iterator seleccionDominio(std::list<Jugador>::iterator itdorJugador);
+    void guardarPartida();
     
     
     

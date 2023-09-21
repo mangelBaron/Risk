@@ -10,13 +10,16 @@
      //METODOS
 
 
-    void Jugador::displayInfo() {
-        std::cout << "idJugador: " << idJugador << std::endl;
-        std::cout << "nombre: " << nombre << std::endl;
-        std::cout << "color: " << color << std::endl;
-        std::cout << "unidadesInfanteria: " << unidadesInfanteria << std::endl;
-    }
+std::string Jugador::displayInfo() {
+    std::string info;
 
+    info = "idJugador: " + std::to_string(idJugador) + "\n"
+           + "nombre: " + nombre + "\n"
+           + "color: " + std::to_string(color) + "\n"
+           + "unidadesInfanteria: " + std::to_string(unidadesInfanteria);
+
+    return info;
+}
     
 
 #endif

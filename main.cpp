@@ -12,34 +12,6 @@
 
 std::string consola;
 
-
-
-
-//-------------------------
-
-
-
-//CLASE PAIS-------------------------
-
-
-//-------------------------
-
-
-//CLASE CONTINENTE-------------------------
-
-
-//-------------------------
-
-
-//CLASE RISK -------------------------
-
-//-------------------------
-
-
-//INTERFAZ
-
-
-
 int main() {
    
     srand(time(NULL));
@@ -123,7 +95,12 @@ Risk1.turno(numeroTurno);
         }else if(consola =="salir"){
            
         }else if(consola=="guardar"){
-            std::cout<<"Comando exitoso!"<<std::endl;
+           if(Risk1.inicio_J == false){
+              std::cout<<" (Juego no inicializado) Esta partida no ha sido inicializada correctamente."<<std::endl;
+           }else{
+               Risk1.guardarPartida();
+           }
+
         }else if(consola =="inicializar"){
             if(Risk1.inicio_J == false){
                 Risk1.inicio_J = true;

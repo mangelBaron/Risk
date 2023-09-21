@@ -1,7 +1,8 @@
 #ifndef RISK_HXX
 #define RISK_HXX
-
+#include <stdlib.h>
 #include "Risk.h"
+#include <fstream>
 
 
   void Risk::inicializar(){
@@ -1036,5 +1037,62 @@ int Risk::lanzarDado() {
     } while (flag == false);
     return aux;
   }
+
+  void Risk::guardarPartida(){
+    int cantidadJugadores = jugadores.size();
+    std::string nombreArchivo;
+    int contador =0;
+
+
+    std::cout<<"Digite el nombre de la partida"<<std::endl;
+        std::cin>>nombreArchivo;
+
+        std::string txt = ".txt";
+
+        nombreArchivo.append(txt);
+
+
+        std::fstream archivo;
+
+
+        archivo.open(nombreArchivo, std::ios::out);
+
+        if(archivo.fail()){
+
+            std::cout<<"(Error al guardar) La partida no ha sido guardada correctamente."<<std::endl;
+
+
+        }else{
+            archivo<< "Cantidad de jugadores: "<< cantidadJugadores <<std::endl<<std::endl;
+
+            for (std::list<Jugador>::iterator itdorJug = jugadores.begin(); itdorJug != jugadores.end();++itdorJug) {
+                archivo<<  itdorJug->displayInfo()<<std::endl<<std::endl;
+            }
+
+            for (std::list<Continente>::iterator itdorCont = continentes.begin(); itdorCont != continentes.end();++itdorCont) {
+                archivo<< itdorCont->displayInfo();
+            }
+
+            archivo<< "TARJETAS: "<<std::endl<<std::endl;
+
+            for (std::list<Tarjeta>::iterator itdorTarjeta = tarjetas.begin(); itdorTarjeta != tarjetas.end(); itdorTarjeta++){
+                archivo<< itdorTarjeta->displayInfo()<<std::endl;
+            }
+
+            archivo<< "COMODINES: "<<std::endl<<std::endl;
+
+            for(std::list<Comodin>::iterator itdorComodin = comodines.begin(); itdorComodin != comodines.end(); itdorComodin++){
+                archivo<< itdorComodin->displayInfo()<<std::endl;
+            }
+
+
+            archivo.close();
+            std::cout<<"(Comando correcto) La partida ha sido guardada correctamente."<<std::endl;
+        }
+
+        return;
+}
+
+
 
 #endif

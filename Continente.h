@@ -29,7 +29,7 @@ public:
         }
       }
       
-    void displayInfo();
+    std::string displayInfo();
 
 };
 

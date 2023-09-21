@@ -6,14 +6,18 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(Estruct_Comp
+        Comodin.h
+        Comodin.hxx
         Continente.h
         Continente.hxx
+        Ficha.h
+        Ficha.hxx
         Jugador.h
         Jugador.hxx
         main.cpp
         Pais.h
         Pais.hxx
         Risk.h
-        Risk.hxx Tarjeta.h Tarjeta.hxx Comodin.h Comodin.hxx
-        Ficha.h
-        Ficha.hxx)
+        Risk.hxx
+        Tarjeta.h
+        Tarjeta.hxx)

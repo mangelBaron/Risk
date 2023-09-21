@@ -8,12 +8,16 @@
 
 //-----------------------
     //METODOS
-    void Pais::displayInfo() {
-        std::cout << "id Pais: " << idPais << std::endl;
-        std::cout << "Nombre Pais: " << nombrePais << std::endl;
-        std::cout << "Cantidad Infanterias: " << cantidadInfanterias << std::endl;
-        std::cout << "Color Ocupacion: " << colorOcupacion << std::endl<<std::endl;
-    }
+std::string Pais::displayInfo() {
+    std::string info;
+
+    info = "id Pais: " + std::to_string(idPais) + "\n";
+    info += "Nombre Pais: " + nombrePais + "\n";
+    info += "Cantidad Infanterias: " + std::to_string(cantidadInfanterias) + "\n";
+    info += "Color Ocupacion: " + std::to_string(colorOcupacion) + "\n\n";
+
+    return info;
+}
 
 
     

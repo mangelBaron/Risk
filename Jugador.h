@@ -48,7 +48,7 @@ public:
       return cartas;
     }
     
-    void displayInfo();
+    std::string displayInfo() ;
 
 //------
 };
