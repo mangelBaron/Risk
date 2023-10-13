@@ -1,0 +1,499 @@
+Cantidad de jugadores: 3
+idJugador: 1
+nombre: a
+color: 1
+unidadesInfanteria: 0
+idJugador: 2
+nombre: b
+color: 2
+unidadesInfanteria: 0
+idJugador: 3
+nombre: c
+color: 3
+unidadesInfanteria: 0
+id de Continente: 0
+Nombre Continente: America del Norte
+id Pais: 1
+Nombre Pais: Alaska
+Cantidad Infanterias: 35
+Color Ocupacion: 1
+Paises colindantes: 6,2,22
+
+id Pais: 2
+Nombre Pais: Alberta
+Cantidad Infanterias: 35
+Color Ocupacion: 2
+Paises colindantes: 1,2,6,9,7
+
+id Pais: 3
+Nombre Pais: América Central
+Cantidad Infanterias: 35
+Color Ocupacion: 3
+Paises colindantes: 32,9,4
+
+id Pais: 4
+Nombre Pais: Estados Unidos Orientales
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 3,9,7,8
+
+id Pais: 5
+Nombre Pais: Groenlandia
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 6,7,8,11
+
+id Pais: 6
+Nombre Pais: Territorio Noroccidental
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 1,2,7,5
+
+id Pais: 7
+Nombre Pais: Ontario
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 6,2,9,4,8,5
+
+id Pais: 8
+Nombre Pais: Quebec
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 5,7,4
+
+id Pais: 9
+Nombre Pais: Estados Unidos Occidentales
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 2,7,4,3
+
+id de Continente: 1
+Nombre Continente: Europa
+id Pais: 10
+Nombre Pais: Gran Bretaña
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 11,13,12,16
+
+id Pais: 11
+Nombre Pais: Islandia
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 5,13,10
+
+id Pais: 12
+Nombre Pais: Europa del Norte
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 10,16,14,13
+
+id Pais: 13
+Nombre Pais: Escandinavia
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 11,10,12,15
+
+id Pais: 14
+Nombre Pais: Europa del Sur
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 12,16,15,23,37,35
+
+id Pais: 15
+Nombre Pais: Ucrania
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 13,12,14,23,17,27
+
+id Pais: 16
+Nombre Pais: Europa Occidental
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 10,12,14,37
+
+id de Continente: 2
+Nombre Continente: Asia
+id Pais: 17
+Nombre Pais: Afghanistan
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 18,19,27,23,15
+
+id Pais: 18
+Nombre Pais: China
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 19,25,24,17
+
+id Pais: 19
+Nombre Pais: India
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 25,18,17,23
+
+id Pais: 20
+Nombre Pais: Irkutsk
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 24,22,28,26
+
+id Pais: 21
+Nombre Pais: Japon
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 24,22
+
+id Pais: 22
+Nombre Pais: Kamchatka
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 21,20,24,28
+
+id Pais: 23
+Nombre Pais: Medio Oriente
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 17,19,15,35,14
+
+id Pais: 24
+Nombre Pais: Mongolia
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 22,20,21,18,26
+
+id Pais: 25
+Nombre Pais: Siam
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 40,18,19
+
+id Pais: 26
+Nombre Pais: Siberia
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 20,18,27,28,24
+
+id Pais: 27
+Nombre Pais: Ural
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 17,15,26
+
+id Pais: 28
+Nombre Pais: Yakutsk
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 26,20,22,18
+
+id de Continente: 3
+Nombre Continente: America del Sur
+id Pais: 29
+Nombre Pais: Argentina
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 30,31
+
+id Pais: 30
+Nombre Pais: Brasil
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 29,31,32,37
+
+id Pais: 31
+Nombre Pais: Peru
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 29,30,32
+
+id Pais: 32
+Nombre Pais: Venezuela
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 30,31,3
+
+id de Continente: 4
+Nombre Continente: Africa
+id Pais: 33
+Nombre Pais: Congo
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 34,37,38
+
+id Pais: 34
+Nombre Pais: Africa Oriental
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 33,35,36,37,38
+
+id Pais: 35
+Nombre Pais: Egipto
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 34,37,23,14
+
+id Pais: 36
+Nombre Pais: Madagascar
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 34,38
+
+id Pais: 37
+Nombre Pais: Africa del Norte
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 33,34,35,30,14,16
+
+id Pais: 38
+Nombre Pais: Africa del Sur
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 33,34,36
+
+id de Continente: 5
+Nombre Continente: Australia
+id Pais: 39
+Nombre Pais: Australia Oriental
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 41,42
+
+id Pais: 40
+Nombre Pais: Indonesia
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 41,42,25
+
+id Pais: 41
+Nombre Pais: Nueva Guinea
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 39,40,42
+
+id Pais: 42
+Nombre Pais: Australia Occidental
+Cantidad Infanterias: 0
+Color Ocupacion: 0
+Paises colindantes: 39,40,41
+
+id de Tarjeta: 1
+Territorio: Alaska
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 1
+
+id de Tarjeta: 2
+Territorio: Alberta
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 2
+
+id de Tarjeta: 3
+Territorio: America Central
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 3
+
+id de Tarjeta: 4
+Territorio: Estados Unidos Orientales
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 5
+Territorio: Groenlandia
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 6
+Territorio: Territorio Noroccidental
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 7
+Territorio: Ontario
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 8
+Territorio: Quebec
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 9
+Territorio: Estado Unidos Occidentales
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 10
+Territorio: Gran Bretaña
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 11
+Territorio: Islandia
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 12
+Territorio: Europa del Norte
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 13
+Territorio: Escandinavia
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 14
+Territorio: Europa del sur
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 15
+Territorio: Ucrania
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 16
+Territorio: Europa occidental
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 17
+Territorio: Afghanistan
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 18
+Territorio: China
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 19
+Territorio: India
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 20
+Territorio: Irkutsk
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 21
+Territorio: Japon
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 22
+Territorio: Kamchatka
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 23
+Territorio: Medio Oriente
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 24
+Territorio: Mongolia
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 25
+Territorio: Siam
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 26
+Territorio: Siberia
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 27
+Territorio: Ural
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 28
+Territorio: Yakutsk
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 29
+Territorio: Argentina
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 30
+Territorio: Brasil
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 31
+Territorio: Peru
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 32
+Territorio: Venezuela
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 33
+Territorio: Congo
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 34
+Territorio: Africa Oriental
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 35
+Territorio: Egipto
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 36
+Territorio: Madagascar
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 37
+Territorio: Africa del Norte
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 38
+Territorio: Africa del Sur
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 39
+Territorio: Australia Oriental
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 40
+Territorio: Indonesia
+Ficha: Infanteria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 41
+Territorio: Nueva Guinea
+Ficha: Caballeria
+Color de ocupación de la tarjeta: 0
+
+id de Tarjeta: 42
+Territorio: Australia occidental
+Ficha: Artilleria
+Color de ocupación de la tarjeta: 0
+
+Id del comodin: 1
+Cantidad de infanterias: 12
+Color de ocupación del comodin: 0
+
+Id del comodin: 2
+Cantidad de infanterias: 12
+Color de ocupación del comodin: 0
+
+Id del comodin: 3
+Cantidad de infanterias: 12
+Color de ocupación del comodin: 0
+
