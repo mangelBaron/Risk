@@ -4,10 +4,6 @@
 
 class Pais {
 private:
-    int idPais;
-    std::string nombrePais;
-    int cantidadInfanterias;
-    int colorOcupacion;
     std::list<int> paisesColindantes;
     
 public:
@@ -44,11 +40,26 @@ public:
     std::list<int>& getPaisesColindantes() {
         return paisesColindantes;
     }
-    
-    
+
+    int getIdPais() const;
+
+    void setIdPais(int idPais);
+
+    void setPaisesColindantes(int paisColindante);
+
     std::string displayInfo() ;
     void getInfoPais();
 
+    void setNombrePais(const std::string &nombrePais);
+
+
+
+private:
+
+    int idPais;
+    std::string nombrePais;
+    int cantidadInfanterias;
+    int colorOcupacion;
 };
 
 #include "Pais.hxx"

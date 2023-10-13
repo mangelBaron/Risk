@@ -20,8 +20,11 @@ public:
                                                                                                  territorio(territorio),
                                                                                                  ficha(
                                                                                                          ficha),
-                                                                                                 colorOcupacion(
+                                                                                              colorOcupacion(
                                                                                                          colorOcupacion) {}
+
+
+    Tarjeta(): idTarjeta(0), territorio(""), ficha((""),(0)), colorOcupacion(0){}
 
     int getIdTarjeta() const {
         return idTarjeta;
@@ -39,9 +42,6 @@ public:
         Tarjeta::territorio = territorio;
     }
 
-    const Ficha &getFicha() const;
-
-    void setFicha(const Ficha &ficha);
 
     int getColorOcupacion() const {
         return colorOcupacion;
@@ -51,8 +51,13 @@ public:
         Tarjeta::colorOcupacion = colorOcupacion;
     }
 
+    const Ficha &getFicha() const;
+
+    void setFicha(const Ficha &ficha);
 
     std::string displayInfo() ;
+
+
 };
 
 

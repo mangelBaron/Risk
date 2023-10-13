@@ -15,4 +15,12 @@ std::string Comodin::displayInfo() {
     return info;
 }
 
+int Comodin::getInfanterias() const {
+    return infanterias;
+}
+
+void Comodin::setInfanterias(int infanterias) {
+    Comodin::infanterias = infanterias;
+}
+
 #endif

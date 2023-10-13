@@ -4,6 +4,7 @@
 #include "Risk.h"
 #include <fstream>
 #include <sstream>
+#include <cstring>
 
 
 void Risk::inicializar(){
@@ -1044,11 +1045,6 @@ int Risk::lanzarDado() {
 
     int contador =0;
 
-
-
-
-
-
         std::fstream archivo;
 
 
@@ -1060,23 +1056,25 @@ int Risk::lanzarDado() {
 
 
         }else{
-            archivo<< "Cantidad de jugadores: "<< cantidadJugadores <<std::endl<<std::endl;
+
+            archivo<< "Cantidad de jugadores: "<< cantidadJugadores <<std::endl;
 
             for (std::list<Jugador>::iterator itdorJug = jugadores.begin(); itdorJug != jugadores.end();++itdorJug) {
-                archivo<<  itdorJug->displayInfo()<<std::endl<<std::endl;
+                archivo << "idJugador: " << itdorJug->getIdJugador()<< std::endl;
+                archivo << "nombre: " <<itdorJug->getNombre()<<std::endl;
+                archivo << "color: " <<itdorJug->getColor()<<std::endl;
+                archivo << "unidadesInfanteria: "<<itdorJug->getUnidadesInfanteria()<<std::endl;
             }
 
             for (std::list<Continente>::iterator itdorCont = continentes.begin(); itdorCont != continentes.end();++itdorCont) {
                 archivo<< itdorCont->displayInfo();
             }
 
-            archivo<< "TARJETAS: "<<std::endl<<std::endl;
 
             for (std::list<Tarjeta>::iterator itdorTarjeta = tarjetas.begin(); itdorTarjeta != tarjetas.end(); itdorTarjeta++){
                 archivo<< itdorTarjeta->displayInfo()<<std::endl;
             }
-
-            archivo<< "COMODINES: "<<std::endl<<std::endl;
+            
 
             for(std::list<Comodin>::iterator itdorComodin = comodines.begin(); itdorComodin != comodines.end(); itdorComodin++){
                 archivo<< itdorComodin->displayInfo()<<std::endl;
@@ -1096,60 +1094,145 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
     std::ifstream archivo(nombreArchivo, std::ios::in);
 
     if (!archivo.is_open()) {
-        std::cout << "(Archivo vacío o incompleto) " << nombreArchivo
-                  << " no contiene información válida para inicializar el juego." << std::endl;
+        inicio_J =false;
+        std::cerr << "Error al abrir el archivo: " << nombreArchivo << std::endl;
         return;
     }
+    inicio_J=true;
+    int cantidadJugadores;
+    Continente continenteActual;
 
-    // Limpiar la lista de jugadores existente antes de agregar los nuevos
-    jugadores.clear();
+
 
     std::string linea;
+    while (std::getline(archivo, linea)) {
+        if (linea.find("Cantidad de jugadores:") != std::string::npos) {
+            cantidadJugadores = std::stoi(linea.substr(linea.find(":") + 1));
+        } else if (linea.find("idJugador:") != std::string::npos) {
+            Jugador jugador;
+            jugador.setIdJugador(std::stoi(linea.substr(linea.find(":") + 1)));
 
-    // Leer la primera línea para obtener la cantidad de jugadores
-    std::getline(archivo, linea);
-    int cantidadJugadores = 0;
-    if (linea.find("Cantidad de jugadores: ") != std::string::npos) {
-        cantidadJugadores = std::stoi(linea.substr(23)); // Obtener el número después de la cadena fija
+            std::getline(archivo, linea);
+            jugador.setNombre(linea.substr(linea.find(":") + 1));
+
+            std::getline(archivo, linea);
+            jugador.setColor(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            std::getline(archivo, linea);
+            jugador.setUnidadesInfanteria(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            jugadores.push_back(jugador);
+
+        } else if (linea.find("id de Continente:") != std::string::npos) {
+            Continente continenteActual;
+            continenteActual.setIdContinente(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            std::getline(archivo, linea);
+            continenteActual.setNombreContinente(linea);
+
+            continentes.push_back(continenteActual);
+
+
+                Pais paisActual;
+                std::getline(archivo, linea);
+                paisActual.setIdPais(std::stoi(linea.substr(linea.find(":") + 1)));
+
+                std::getline(archivo, linea);
+                paisActual.setNombrePais(linea);
+
+                std::getline(archivo, linea);
+                paisActual.setCantidadInfanterias(std::stoi(linea.substr(linea.find(":") + 1)));
+
+                std::getline(archivo, linea);
+                paisActual.setColorOcupacion(std::stoi(linea.substr(linea.find(":") + 1)));
+
+                bool flagColindantes = true;
+                while (flagColindantes) {
+                    std::getline(archivo, linea);
+                    if (linea.find("Paises colindantes:") != std::string::npos) {
+                        // Separa los paises colindantes por comas y guárdalos en un contenedor (por ejemplo, un vector)
+                        std::string colindantes = linea.substr(linea.find(":") + 1);
+                        std::istringstream ss(colindantes);
+                        std::string colindante;
+                        while (std::getline(ss, colindante, ',')) {
+                            paisActual.setPaisesColindantes(std::stoi(colindante));
+                        }
+                    } else {
+                        flagColindantes = false;
+                    }
+                }
+
+                continenteActual.paises.push_back(paisActual);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        else if (linea.find("id de Tarjeta:") != std::string::npos){
+            Tarjeta tarjeta;
+            tarjeta.setIdTarjeta(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            std::getline(archivo, linea);
+            tarjeta.setTerritorio(linea.substr(linea.find(":") + 1));
+
+            std::getline(archivo, linea);
+            Ficha ficha;
+
+
+
+            if(linea=="Infanteria"){
+                ficha.setNombre(linea);
+                ficha.setInfanterias(1);
+            }else if(linea=="Caballeria"){
+                ficha.setNombre(linea);
+                ficha.setInfanterias(5);
+            }else if(linea=="Artilleria"){
+                ficha.setNombre(linea);
+                ficha.setInfanterias(10);
+            }
+
+            tarjeta.setFicha(ficha);
+
+            std::getline(archivo, linea);
+            tarjeta.setColorOcupacion(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            tarjetas.push_back(tarjeta);
+        }else if(linea.find("Id del comodin:") != std::string::npos){
+            Comodin comodin;
+            comodin.setIdComodin(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            std::getline(archivo, linea);
+            comodin.setInfanterias(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            std::getline(archivo, linea);
+
+            comodin.setColorOcupacion(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            comodines.push_back(comodin);
+
+
+        }
     }
 
-    // Leer información de jugadores y agregarlos a la lista
-    for (int i = 0; i < cantidadJugadores; ++i) {
-        Jugador jugador;
 
-        // Leer idJugador
-        std::getline(archivo, linea);
-        if (linea.find("idJugador: ") != std::string::npos) {
-            jugador.setIdJugador(std::stoi(linea.substr(12))); // Obtener el número después de la cadena fija
-        }
-
-        // Leer nombre
-        std::getline(archivo, linea);
-        if (linea.find("nombre: ") != std::string::npos) {
-            jugador.setNombre(linea.substr(8)); // Obtener el nombre después de la cadena fija
-        }
-
-        // Leer color
-        std::getline(archivo, linea);
-        if (linea.find("color: ") != std::string::npos) {
-            jugador.setColor(std::stoi(linea.substr(7))); // Obtener el número después de la cadena fija
-        }
-
-        // Leer unidadesInfanteria
-        std::getline(archivo, linea);
-        if (linea.find("unidadesInfanteria: ") != std::string::npos) {
-            jugador.setUnidadesInfanteria(std::stoi(linea.substr(20))); // Obtener el número después de la cadena fija
-        }
-
-        // Agregar el jugador a la lista
-        jugadores.push_back(jugador);
-    }
-
-    // Resto de la información...
     archivo.close();
-    inicio_J = true;
-    std::cout << "Los datos del archivo " << nombreArchivo << " han sido cargados correctamente!" << std::endl;
-}
 
+
+}
 
 #endif

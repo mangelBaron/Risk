@@ -8,7 +8,8 @@
 std::string Continente::displayInfo() {
     std::string info;
 
-    info = "Nombre Continente: " + nombreContinente + "\n";
+    info = "id de Continente: " + std::to_string(idContinente) + "\n" +
+           "Nombre Continente: " + nombreContinente + "\n";
 
     for (std::list<Pais>::iterator it = paises.begin(); it != paises.end(); ++it) {
         info += it->displayInfo() + "\n";
@@ -17,6 +18,17 @@ std::string Continente::displayInfo() {
     return info;
 }
 
+void Continente::setIdContinente(int idContinente) {
+    Continente::idContinente = idContinente;
+}
+
+void Continente::setNombreContinente(const std::string &nombreContinente) {
+    Continente::nombreContinente = nombreContinente;
+}
+
+void Continente::setPaises(const std::list<Pais> &paises) {
+    Continente::paises = paises;
+}
 
 
 #endif

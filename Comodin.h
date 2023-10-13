@@ -17,6 +17,8 @@ public:
     Comodin(int idComodin, int colorOcupacion) : idComodin(idComodin),
                                                                   colorOcupacion(colorOcupacion) {}
 
+    Comodin() : idComodin(0), infanterias(0), colorOcupacion(0) {}
+
     int getIdComodin() const {
         return idComodin;
     }
@@ -33,6 +35,10 @@ public:
     void setColorOcupacion(int colorOcupacion) {
         Comodin::colorOcupacion = colorOcupacion;
     }
+
+    int getInfanterias() const;
+
+    void setInfanterias(int infanterias);
 
     std::string displayInfo();
 };

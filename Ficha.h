@@ -12,6 +12,8 @@ class Ficha{
     //Constructores
     Ficha(const std::string &nombre, int infanterias) : nombre(nombre), infanterias(infanterias) {}
 
+    Ficha() : nombre(""), infanterias (0){}
+
     //Metodos de acceso
     const std::string &getNombre() const {
         return nombre;

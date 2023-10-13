@@ -14,7 +14,19 @@ std::string Pais::displayInfo() {
     info = "id Pais: " + std::to_string(idPais) + "\n";
     info += "Nombre Pais: " + nombrePais + "\n";
     info += "Cantidad Infanterias: " + std::to_string(cantidadInfanterias) + "\n";
-    info += "Color Ocupacion: " + std::to_string(colorOcupacion) + "\n\n";
+    info += "Color Ocupacion: " + std::to_string(colorOcupacion) + "\n";
+
+    // Si hay paises colindantes, agrega la información correspondiente.
+    if (!paisesColindantes.empty()) {
+        info += "Paises colindantes: ";
+        for (std::list<int>::iterator it = paisesColindantes.begin(); it != paisesColindantes.end(); ++it) {
+            info += std::to_string(*it);
+            if (std::next(it) != paisesColindantes.end()) {
+                info += ",";
+            }
+        }
+        info += "\n";
+    }
 
     return info;
 }
@@ -28,6 +40,26 @@ std::string Pais::displayInfo() {
         std::cout << "Color Ocupacion: " << colorOcupacion << std::endl<<std::endl;
     }
 
-    
+int Pais::getIdPais() const {
+    return idPais;
+}
+
+void Pais::setIdPais(int idPais) {
+    Pais::idPais = idPais;
+}
+
+void Pais::setNombrePais(const std::string &nombrePais) {
+    Pais::nombrePais = nombrePais;
+}
+
+void Pais::setPaisesColindantes(int paisColindante) {
+
+
+        paisesColindantes.push_back(paisColindante);
+
+
+
+}
+
 
 #endif

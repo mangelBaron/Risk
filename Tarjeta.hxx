@@ -15,6 +15,13 @@ std::string Tarjeta::displayInfo() {
     return info;
 }
 
+const Ficha &Tarjeta::getFicha() const {
+    return ficha;
+}
+
+void Tarjeta::setFicha(const Ficha &ficha) {
+    Tarjeta::ficha = ficha;
+}
 
 
 #endif
