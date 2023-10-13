@@ -1095,7 +1095,7 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
 
     if (!archivo.is_open()) {
         inicio_J =false;
-        std::cerr << "Error al abrir el archivo: " << nombreArchivo << std::endl;
+        std::cerr << "(Archivo vacío/incompleto o inexistente) " << nombreArchivo << " no contiene información valida para inicializar el juego."<< std::endl;
         return;
     }
     inicio_J=true;
@@ -1123,67 +1123,89 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
 
             jugadores.push_back(jugador);
 
-        } else if (linea.find("id de Continente:") != std::string::npos) {
+        } else  if (linea.find("id de Continente:") != std::string::npos) {
             Continente continenteActual;
             continenteActual.setIdContinente(std::stoi(linea.substr(linea.find(":") + 1)));
 
             std::getline(archivo, linea);
-            continenteActual.setNombreContinente(linea);
+            continenteActual.setNombreContinente(linea.substr(linea.find(":") + 1));
+            continentes.push_back( continenteActual);
+        }
+        else if (linea.find("id Pais:") != std::string::npos) {
+            // Procesar un nuevo país
+            Pais paisActual;
+            paisActual.setIdPais(std::stoi(linea.substr(linea.find(":") + 1)));
 
-            continentes.push_back(continenteActual);
+            std::getline(archivo, linea);
+            paisActual.setNombrePais(linea.substr(linea.find(":") + 1));
 
+            std::getline(archivo, linea);
+            paisActual.setCantidadInfanterias(std::stoi(linea.substr(linea.find(":") + 1)));
 
-                Pais paisActual;
+            std::getline(archivo, linea);
+            paisActual.setColorOcupacion(std::stoi(linea.substr(linea.find(":") + 1)));
+
+            bool flagColindantes = true;
+            while (flagColindantes) {
                 std::getline(archivo, linea);
-                paisActual.setIdPais(std::stoi(linea.substr(linea.find(":") + 1)));
+                if (linea.find("Paises colindantes:") != std::string::npos) {
+                    std::string colindantes = linea.substr(linea.find(":") + 1);
+                    std::istringstream ss(colindantes);
+                    std::string colindante;
+                    while (std::getline(ss, colindante, ',')) {
+                        paisActual.setPaisesColindantes(std::stoi(colindante));
+                    }
+                } else {
+                    flagColindantes = false;
+                }
+            }
 
-                std::getline(archivo, linea);
-                paisActual.setNombrePais(linea);
 
-                std::getline(archivo, linea);
-                paisActual.setCantidadInfanterias(std::stoi(linea.substr(linea.find(":") + 1)));
-
-                std::getline(archivo, linea);
-                paisActual.setColorOcupacion(std::stoi(linea.substr(linea.find(":") + 1)));
-
-                bool flagColindantes = true;
-                while (flagColindantes) {
-                    std::getline(archivo, linea);
-                    if (linea.find("Paises colindantes:") != std::string::npos) {
-                        // Separa los paises colindantes por comas y guárdalos en un contenedor (por ejemplo, un vector)
-                        std::string colindantes = linea.substr(linea.find(":") + 1);
-                        std::istringstream ss(colindantes);
-                        std::string colindante;
-                        while (std::getline(ss, colindante, ',')) {
-                            paisActual.setPaisesColindantes(std::stoi(colindante));
-                        }
-                    } else {
-                        flagColindantes = false;
+            if(paisActual.getIDPais()>0 && paisActual.getIDPais()<10){
+                for(std::list<Continente>::iterator it= continentes.begin(); it !=  continentes.end(); it++){
+                    if(it->getIdContinente()==0){
+                        it->paises.push_back(paisActual);
                     }
                 }
 
-                continenteActual.paises.push_back(paisActual);
+            }else if(paisActual.getIDPais()>9 && paisActual.getIDPais()<17){
+                for(std::list<Continente>::iterator it= continentes.begin(); it !=  continentes.end(); it++){
+                    if(it->getIdContinente()==1){
+                        it->paises.push_back(paisActual);
+                    }
+            }}else if(paisActual.getIDPais()>16 && paisActual.getIDPais()<29){
+                    for(std::list<Continente>::iterator it= continentes.begin(); it !=  continentes.end(); it++){
+                        if(it->getIdContinente()==2){
+                            it->paises.push_back(paisActual);
+                        }
+                }
+            }else if(paisActual.getIDPais()>28 && paisActual.getIDPais()<33){
+                for(std::list<Continente>::iterator it= continentes.begin(); it !=  continentes.end(); it++){
+                    if(it->getIdContinente()==3){
+                        it->paises.push_back(paisActual);
+                    }
+                }
+            }else if(paisActual.getIDPais()>32 && paisActual.getIDPais()<39){
+                for(std::list<Continente>::iterator it= continentes.begin(); it !=  continentes.end(); it++){
+                    if(it->getIdContinente()==4){
+                        it->paises.push_back(paisActual);
+                    }
+                }
+            }else if(paisActual.getIDPais()>38 && paisActual.getIDPais()<43){
+                for(std::list<Continente>::iterator it= continentes.begin(); it !=  continentes.end(); it++){
+                    if(it->getIdContinente()==5){
+                        it->paises.push_back(paisActual);
+                    }
+                }
             }
 
 
 
 
+        }
 
+else if (linea.find("id de Tarjeta:") != std::string::npos){
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        else if (linea.find("id de Tarjeta:") != std::string::npos){
             Tarjeta tarjeta;
             tarjeta.setIdTarjeta(std::stoi(linea.substr(linea.find(":") + 1)));
 
@@ -1232,7 +1254,44 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
 
     archivo.close();
 
+    std::cout<<"(Comando correcto) Juego "<<nombreArchivo <<"  haa sido inicializado correctamente!";
 
+
+}
+
+
+void Risk::guardarComprimido(std::string nombreArchivo){
+    int cantidadJugadores = jugadores.size();
+
+    int contador =0;
+
+    std::ofstream archivo(nombreArchivo , std::ios::binary| std::ios::app);
+
+    if(archivo.fail()){
+
+        std::cout<<"(Error al guardar) La partida no ha sido guardada correctamente."<<std::endl;
+
+
+    }
+    archivo<< "Cantidad de jugadores: "<< cantidadJugadores <<std::endl;
+
+    for (std::list<Jugador>::iterator itdorJug = jugadores.begin(); itdorJug != jugadores.end();++itdorJug) {
+        archivo << itdorJug->displayInfo().c_str(), itdorJug->displayInfo().size();
+    }
+
+    for (std::list<Continente>::iterator itdorCont = continentes.begin(); itdorCont != continentes.end();++itdorCont) {
+        archivo<< itdorCont->displayInfo().c_str(), itdorCont->displayInfo().size();
+    }
+
+
+    for (std::list<Tarjeta>::iterator itdorTarjeta = tarjetas.begin(); itdorTarjeta != tarjetas.end(); itdorTarjeta++){
+        archivo<< itdorTarjeta->displayInfo().c_str(), itdorTarjeta->displayInfo().size();
+    }
+
+
+    for(std::list<Comodin>::iterator itdorComodin = comodines.begin(); itdorComodin != comodines.end(); itdorComodin++){
+        archivo<< itdorComodin->displayInfo().c_str(), itdorComodin->displayInfo().size();
+    }
 }
 
 #endif

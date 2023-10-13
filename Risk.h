@@ -32,6 +32,8 @@ public:
     std::list<Pais>::iterator seleccionDominio(std::list<Jugador>::iterator itdorJugador);
     void guardarPartida(std::string nombreArchivo);
     void inicializarArchivo(std::string nombreArchivo);
+
+    void guardarComprimido(std::string nombreArchivo);
 };
 
 #include "Risk.hxx"

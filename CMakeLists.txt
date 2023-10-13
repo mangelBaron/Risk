@@ -20,4 +20,8 @@ add_executable(Estruct_Comp
         Risk.h
         Risk.hxx
         Tarjeta.h
-        Tarjeta.hxx)
+        Tarjeta.hxx
+        NodoHuffman.h
+        NodoHuffman.hxx
+        ArbolHuffman.h
+        ArbolHuffman.hxx)

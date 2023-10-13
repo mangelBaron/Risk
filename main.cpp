@@ -30,6 +30,9 @@ int main() {
       std::string consolaGuardar;
       std::string nombreArchivoGuardar;
 
+      std::string consolaComprimido;
+      std::string nombreArchivoComprimido;
+
 
 
 
@@ -38,12 +41,18 @@ int main() {
         std::cout<<std::endl;
         std::string consolaCopia= consola;
         std::string consolaCopia2= consola;
+        std::string consolaCopia3= consola;
 
         consolaInicializar = consola.substr(0, 11);
         nombreArchivoInicializar = consolaCopia.erase(0,12);
 
         consolaGuardar = consola.substr(0, 7);
         nombreArchivoGuardar = consolaCopia2.erase(0, 8);
+
+        consolaComprimido = consola.substr(0, 17);
+        nombreArchivoComprimido=  consolaCopia3.erase(0, 18);
+
+
      
       if(consola == "turno 1" || consola == "turno 2"||consola == "turno 3"|| consola == "turno 4"|| consola == "turno 5"|| consola == "turno 6"){
 if (!consola.empty()) {
@@ -131,8 +140,12 @@ Risk1.turno(numeroTurno);
             } else {
                 std::cout<<"(Juego en curso) El juego ya ha sido inicializado"<<std::endl;
             }
-        }else if(consola =="guardar_comprimido"){
-            std::cout<<"Comando exitoso!"<<std::endl;
+        }else if(consolaComprimido =="GuardarComprimido" && nombreArchivoComprimido == consolaCopia3){
+
+            Risk1.guardarComprimido(nombreArchivoComprimido);
+
+
+
         }else if(consola =="costo_conquista"){
             std::cout<<"Comando exitoso!"<<std::endl;
         }else if(consolaInicializar == "inicializar" && nombreArchivoInicializar == consolaCopia){
