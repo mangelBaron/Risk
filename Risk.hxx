@@ -5,6 +5,13 @@
 #include <fstream>
 #include <sstream>
 #include <cstring>
+#include <fstream>
+#include <sstream>
+
+
+
+
+
 
 
 void Risk::inicializar(){
@@ -1260,38 +1267,6 @@ else if (linea.find("id de Tarjeta:") != std::string::npos){
 }
 
 
-void Risk::guardarComprimido(std::string nombreArchivo){
-    int cantidadJugadores = jugadores.size();
 
-    int contador =0;
-
-    std::ofstream archivo(nombreArchivo , std::ios::binary| std::ios::app);
-
-    if(archivo.fail()){
-
-        std::cout<<"(Error al guardar) La partida no ha sido guardada correctamente."<<std::endl;
-
-
-    }
-    archivo<< "Cantidad de jugadores: "<< cantidadJugadores <<std::endl;
-
-    for (std::list<Jugador>::iterator itdorJug = jugadores.begin(); itdorJug != jugadores.end();++itdorJug) {
-        archivo << itdorJug->displayInfo().c_str(), itdorJug->displayInfo().size();
-    }
-
-    for (std::list<Continente>::iterator itdorCont = continentes.begin(); itdorCont != continentes.end();++itdorCont) {
-        archivo<< itdorCont->displayInfo().c_str(), itdorCont->displayInfo().size();
-    }
-
-
-    for (std::list<Tarjeta>::iterator itdorTarjeta = tarjetas.begin(); itdorTarjeta != tarjetas.end(); itdorTarjeta++){
-        archivo<< itdorTarjeta->displayInfo().c_str(), itdorTarjeta->displayInfo().size();
-    }
-
-
-    for(std::list<Comodin>::iterator itdorComodin = comodines.begin(); itdorComodin != comodines.end(); itdorComodin++){
-        archivo<< itdorComodin->displayInfo().c_str(), itdorComodin->displayInfo().size();
-    }
-}
 
 #endif

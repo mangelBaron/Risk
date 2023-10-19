@@ -10,10 +10,10 @@
 
 class Tarjeta{
 private:
-    int idTarjeta;
-    std::string territorio;
-    Ficha ficha;
-    int colorOcupacion;
+int idTarjeta;
+std::string territorio;
+Ficha ficha;
+int colorOcupacion;
 
 public:
     Tarjeta(int idTarjeta, const std::string &territorio, Ficha ficha, int colorOcupacion) : idTarjeta(idTarjeta),

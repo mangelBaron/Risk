@@ -5,11 +5,11 @@
 //CLASE JUGADOR-------------------------
 class Jugador {
 private:
-    int idJugador;
-    std::string nombre;
-    int color;
-    int unidadesInfanteria;
-    int cartas=0;
+int idJugador;
+std::string nombre;
+int color;
+int unidadesInfanteria;
+int cartas=0;
     
 public:
     Jugador(int id, const std::string& nombre, int color, int unidadesInf)

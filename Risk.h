@@ -33,7 +33,7 @@ public:
     void guardarPartida(std::string nombreArchivo);
     void inicializarArchivo(std::string nombreArchivo);
 
-    void guardarComprimido(std::string nombreArchivo);
+
 };
 
 #include "Risk.hxx"

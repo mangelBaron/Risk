@@ -56,10 +56,10 @@ public:
 
 private:
 
-    int idPais;
-    std::string nombrePais;
-    int cantidadInfanterias;
-    int colorOcupacion;
+int idPais;
+std::string nombrePais;
+int cantidadInfanterias;
+int colorOcupacion;
 };
 
 #include "Pais.hxx"

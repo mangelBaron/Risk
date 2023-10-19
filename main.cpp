@@ -142,7 +142,7 @@ Risk1.turno(numeroTurno);
             }
         }else if(consolaComprimido =="GuardarComprimido" && nombreArchivoComprimido == consolaCopia3){
 
-            Risk1.guardarComprimido(nombreArchivoComprimido);
+
 
 
 

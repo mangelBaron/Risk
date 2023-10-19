@@ -9,9 +9,9 @@
 class Comodin{
 
 private:
-    int idComodin;
-    int infanterias = 12;
-    int colorOcupacion;
+int idComodin;
+int infanterias = 12;
+int colorOcupacion;
 public:
 
     Comodin(int idComodin, int colorOcupacion) : idComodin(idComodin),
