@@ -22,6 +22,10 @@ add_executable(Estruct_Comp
         Tarjeta.h
         Tarjeta.hxx
         NodoHuffman.h
-        NodoHuffman.hxx
+        NodoHuffman.cpp
         ArbolHuffman.h
-        ArbolHuffman.hxx)
+        ArbolHuffman.cpp
+        NodoHuffman.h
+        NodoHuffman.cpp
+        ArbolHuffman.h
+        ArbolHuffman.cpp)

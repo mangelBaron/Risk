@@ -7,10 +7,10 @@
 std::string Tarjeta::displayInfo() {
     std::string info;
 
-    info = "id de Tarjeta: " + std::to_string(idTarjeta) + "\n";
-    info += "Territorio: " + territorio + "\n";
-    info += "Ficha: " + ficha.getNombre() + "\n";
-    info += "Color de ocupación de la tarjeta: " + std::to_string(colorOcupacion) + "\n";
+    info = "id de tarjeta: " + std::to_string(idTarjeta) + "\n";
+    info += "territorio: " + territorio + "\n";
+    info += "ficha: " + ficha.getNombre() + "\n";
+    info += "color de ocupacion de la tarjeta: " + std::to_string(colorOcupacion) + "\n";
 
     return info;
 }

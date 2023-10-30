@@ -11,14 +11,14 @@
 std::string Pais::displayInfo() {
     std::string info;
 
-    info = "id Pais: " + std::to_string(idPais) + "\n";
-    info += "Nombre Pais: " + nombrePais + "\n";
-    info += "Cantidad Infanterias: " + std::to_string(cantidadInfanterias) + "\n";
-    info += "Color Ocupacion: " + std::to_string(colorOcupacion) + "\n";
+    info = "id pais: " + std::to_string(idPais) + "\n";
+    info += "nombre pais: " + nombrePais + "\n";
+    info += "cantidad infanterias: " + std::to_string(cantidadInfanterias) + "\n";
+    info += "color ocupacion: " + std::to_string(colorOcupacion) + "\n";
 
     // Si hay paises colindantes, agrega la información correspondiente.
     if (!paisesColindantes.empty()) {
-        info += "Paises colindantes: ";
+        info += "paises colindantes: ";
         for (std::list<int>::iterator it = paisesColindantes.begin(); it != paisesColindantes.end(); ++it) {
             info += std::to_string(*it);
             if (std::next(it) != paisesColindantes.end()) {

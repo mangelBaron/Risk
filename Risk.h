@@ -34,6 +34,7 @@ public:
     void inicializarArchivo(std::string nombreArchivo);
 
 
+    void guardarArchivoBinario(std::string nombreArchivo);
 };
 
 #include "Risk.hxx"

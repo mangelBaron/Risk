@@ -128,6 +128,54 @@ Estruct_Comp/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Estruct_Comp.dir\build.make CMakeFiles/Estruct_Comp.dir/build
 .PHONY : Estruct_Comp/fast
 
+ArbolHuffman.obj: ArbolHuffman.cpp.obj
+.PHONY : ArbolHuffman.obj
+
+# target to build an object file
+ArbolHuffman.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Estruct_Comp.dir\build.make CMakeFiles/Estruct_Comp.dir/ArbolHuffman.cpp.obj
+.PHONY : ArbolHuffman.cpp.obj
+
+ArbolHuffman.i: ArbolHuffman.cpp.i
+.PHONY : ArbolHuffman.i
+
+# target to preprocess a source file
+ArbolHuffman.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Estruct_Comp.dir\build.make CMakeFiles/Estruct_Comp.dir/ArbolHuffman.cpp.i
+.PHONY : ArbolHuffman.cpp.i
+
+ArbolHuffman.s: ArbolHuffman.cpp.s
+.PHONY : ArbolHuffman.s
+
+# target to generate assembly for a file
+ArbolHuffman.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Estruct_Comp.dir\build.make CMakeFiles/Estruct_Comp.dir/ArbolHuffman.cpp.s
+.PHONY : ArbolHuffman.cpp.s
+
+NodoHuffman.obj: NodoHuffman.cpp.obj
+.PHONY : NodoHuffman.obj
+
+# target to build an object file
+NodoHuffman.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Estruct_Comp.dir\build.make CMakeFiles/Estruct_Comp.dir/NodoHuffman.cpp.obj
+.PHONY : NodoHuffman.cpp.obj
+
+NodoHuffman.i: NodoHuffman.cpp.i
+.PHONY : NodoHuffman.i
+
+# target to preprocess a source file
+NodoHuffman.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Estruct_Comp.dir\build.make CMakeFiles/Estruct_Comp.dir/NodoHuffman.cpp.i
+.PHONY : NodoHuffman.cpp.i
+
+NodoHuffman.s: NodoHuffman.cpp.s
+.PHONY : NodoHuffman.s
+
+# target to generate assembly for a file
+NodoHuffman.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Estruct_Comp.dir\build.make CMakeFiles/Estruct_Comp.dir/NodoHuffman.cpp.s
+.PHONY : NodoHuffman.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -161,6 +209,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Estruct_Comp
+	@echo ... ArbolHuffman.obj
+	@echo ... ArbolHuffman.i
+	@echo ... ArbolHuffman.s
+	@echo ... NodoHuffman.obj
+	@echo ... NodoHuffman.i
+	@echo ... NodoHuffman.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -8,9 +8,9 @@
 std::string Comodin::displayInfo() {
     std::string info;
 
-    info = "Id del comodin: " + std::to_string(idComodin) + "\n";
-    info += "Cantidad de infanterias: " + std::to_string(infanterias) + "\n";
-    info += "Color de ocupación del comodin: " + std::to_string(colorOcupacion) + "\n";
+    info = "id del comodin: " + std::to_string(idComodin) + "\n";
+    info += "cantidad de infanterias: " + std::to_string(infanterias) + "\n";
+    info += "color de ocupacion del comodin: " + std::to_string(colorOcupacion) + "\n";
 
     return info;
 }

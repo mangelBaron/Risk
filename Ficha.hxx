@@ -7,8 +7,8 @@
 
 void Ficha::displayInfo() {
 
-    std::cout<<"Ficha: "<< nombre << std::endl;
-    std::cout<<"Equivale a "<<infanterias << " infanterias" << std::endl;
+    std::cout<<"ficha: "<< nombre << std::endl;
+    std::cout<<"equivale a "<<infanterias << " infanterias" << std::endl;
 }
 
 #endif

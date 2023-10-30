@@ -2,16 +2,13 @@
 #define RISK_HXX
 #include <stdlib.h>
 #include "Risk.h"
+#include "ArbolHuffman.h"
 #include <fstream>
 #include <sstream>
 #include <cstring>
 #include <fstream>
 #include <sstream>
-
-
-
-
-
+#include <deque>
 
 
 void Risk::inicializar(){
@@ -29,121 +26,121 @@ void Risk::inicializar(){
 
 
     continentes.push_back(
-        Continente(0, "America del Norte", {
-            Pais(1,"Alaska", 0, 0, {6,2,22}),
-            Pais(2,"Alberta", 0, 0, {1,2,6,9,7}),
-            Pais(3,"América Central", 0, 0, {32,9,4}),
-            Pais(4,"Estados Unidos Orientales", 0, 0, {3,9,7,8}),
-            Pais(5,"Groenlandia", 0, 0, {6,7,8,11}),
-            Pais(6,"Territorio Noroccidental", 0, 0, {1,2,7,5}),
-            Pais(7,"Ontario", 0, 0, {6,2,9,4,8,5}),
-            Pais(8,"Quebec", 0, 0, {5,7,4}),
-            Pais(9,"Estados Unidos Occidentales", 0, 0, {2,7,4,3}),
+        Continente(0, "america del Norte", {
+            Pais(1,"alaska", 0, 0, {6,2,22}),
+            Pais(2,"alberta", 0, 0, {1,2,6,9,7}),
+            Pais(3,"america Central", 0, 0, {32,9,4}),
+            Pais(4,"estados unidos orientales", 0, 0, {3,9,7,8}),
+            Pais(5,"groenlandia", 0, 0, {6,7,8,11}),
+            Pais(6,"territorio Noroccidental", 0, 0, {1,2,7,5}),
+            Pais(7,"ontario", 0, 0, {6,2,9,4,8,5}),
+            Pais(8,"quebec", 0, 0, {5,7,4}),
+            Pais(9,"estados unidos cccidentales", 0, 0, {2,7,4,3}),
         })
     );
 
     continentes.push_back(
-        Continente(1, "Europa", {
-            Pais(10,"Gran Bretaña", 0, 0, {11,13,12,16}),
-            Pais(11,"Islandia", 0, 0, {5,13,10}),
-            Pais(12,"Europa del Norte", 0, 0, {10,16,14,13}),
-            Pais(13,"Escandinavia", 0, 0, {11,10,12,15}),
-            Pais(14,"Europa del Sur", 0, 0, {12,16,15,23,37,35}),
-            Pais(15,"Ucrania", 0, 0, {13,12,14,23,17,27}),
-            Pais(16,"Europa Occidental", 0, 0, {10,12,14,37}),
+        Continente(1, "europa", {
+            Pais(10,"gran bretania", 0, 0, {11,13,12,16}),
+            Pais(11,"islandia", 0, 0, {5,13,10}),
+            Pais(12,"europa del norte", 0, 0, {10,16,14,13}),
+            Pais(13,"escandinavia", 0, 0, {11,10,12,15}),
+            Pais(14,"europa del sur", 0, 0, {12,16,15,23,37,35}),
+            Pais(15,"ucrania", 0, 0, {13,12,14,23,17,27}),
+            Pais(16,"europa occidental", 0, 0, {10,12,14,37}),
         })
     );
 
     continentes.push_back(
-        Continente(2, "Asia", {
-            Pais(17,"Afghanistan", 0, 0, {18,19,27,23,15}),
-            Pais(18,"China", 0, 0, {19,25,24,17}),
-            Pais(19,"India", 0, 0, {25,18,17,23}),
-            Pais(20,"Irkutsk", 0, 0, {24,22,28,26}),
-            Pais(21,"Japon", 0, 0, {24,22}),
-            Pais(22,"Kamchatka", 0, 0, {21,20,24,28}),
-            Pais(23,"Medio Oriente", 0, 0, {17,19,15,35,14}),
-            Pais(24,"Mongolia", 0, 0, {22,20,21,18,26}),
-            Pais(25,"Siam", 0, 0, {40,18,19}),
-            Pais(26,"Siberia", 0, 0, {20,18,27,28,24}),
-            Pais(27,"Ural", 0, 0, {17,15,26}),
-            Pais(28,"Yakutsk", 0, 0, {26,20,22,18}),
+        Continente(2, "asia", {
+            Pais(17,"afghanistan", 0, 0, {18,19,27,23,15}),
+            Pais(18,"china", 0, 0, {19,25,24,17}),
+            Pais(19,"india", 0, 0, {25,18,17,23}),
+            Pais(20,"irkutsk", 0, 0, {24,22,28,26}),
+            Pais(21,"japon", 0, 0, {24,22}),
+            Pais(22,"kamchatka", 0, 0, {21,20,24,28}),
+            Pais(23,"medio oriente", 0, 0, {17,19,15,35,14}),
+            Pais(24,"mongolia", 0, 0, {22,20,21,18,26}),
+            Pais(25,"siam", 0, 0, {40,18,19}),
+            Pais(26,"siberia", 0, 0, {20,18,27,28,24}),
+            Pais(27,"ural", 0, 0, {17,15,26}),
+            Pais(28,"yakutsk", 0, 0, {26,20,22,18}),
         })
     );
 
     continentes.push_back(
-        Continente(3, "America del Sur", {
-            Pais(29,"Argentina", 0, 0, {30,31}),
-            Pais(30,"Brasil", 0, 0, {29,31,32,37}),
-            Pais(31,"Peru", 0, 0, {29,30,32}),
-            Pais(32,"Venezuela", 0, 0, {30,31,3}),
+        Continente(3, "america del Sur", {
+            Pais(29,"argentina", 0, 0, {30,31}),
+            Pais(30,"brasil", 0, 0, {29,31,32,37}),
+            Pais(31,"peru", 0, 0, {29,30,32}),
+            Pais(32,"venezuela", 0, 0, {30,31,3}),
         })
     );
 
     continentes.push_back(
-        Continente(4, "Africa", {
-            Pais(33,"Congo", 0, 0, {34,37,38}),
-            Pais(34,"Africa Oriental", 0, 0, {33,35,36,37,38}),
-            Pais(35,"Egipto", 0, 0, {34,37,23,14}),
-            Pais(36,"Madagascar", 0, 0, {34,38}),
-            Pais(37,"Africa del Norte", 0, 0, {33,34,35,30,14,16}),
-            Pais(38,"Africa del Sur", 0, 0, {33,34,36}),
+        Continente(4, "africa", {
+            Pais(33,"congo", 0, 0, {34,37,38}),
+            Pais(34,"africa oriental", 0, 0, {33,35,36,37,38}),
+            Pais(35,"egipto", 0, 0, {34,37,23,14}),
+            Pais(36,"madagascar", 0, 0, {34,38}),
+            Pais(37,"africa del norte", 0, 0, {33,34,35,30,14,16}),
+            Pais(38,"africa del sur", 0, 0, {33,34,36}),
         })
     );
 
     continentes.push_back(
-        Continente(5,"Australia", {
-            Pais(39,"Australia Oriental", 0, 0, {41,42}),
-            Pais(40,"Indonesia", 0, 0, {41,42,25}),
-            Pais(41,"Nueva Guinea", 0, 0, {39,40,42}),
-            Pais(42,"Australia Occidental", 0, 0, {39,40,41}),
+        Continente(5,"australia", {
+            Pais(39,"australia oriental", 0, 0, {41,42}),
+            Pais(40,"indonesia", 0, 0, {41,42,25}),
+            Pais(41,"nueva guinea", 0, 0, {39,40,42}),
+            Pais(42,"australia occidental", 0, 0, {39,40,41}),
         })
     );
 
     //TARJETAS
 
-      tarjetas.push_back(Tarjeta{1, "Alaska", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{2, "Alberta", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{3, "America Central", Ficha("Artilleria",10), 0});
-      tarjetas.push_back(Tarjeta{4, "Estados Unidos Orientales", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{5, "Groenlandia", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{6, "Territorio Noroccidental", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{7, "Ontario", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{8, "Quebec", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{9, "Estado Unidos Occidentales", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{10, "Gran Bretaña", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{11,"Islandia", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{12, "Europa del Norte", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{13, "Escandinavia", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{14, "Europa del sur", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{15, "Ucrania", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{16, "Europa occidental", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{17, "Afghanistan", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{18, "China", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{19, "India", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{20, "Irkutsk", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{21, "Japon", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{22, "Kamchatka", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{   23, "Medio Oriente", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{24, "Mongolia", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{25, "Siam", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{26, "Siberia", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{27, "Ural", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{28, "Yakutsk", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{29, "Argentina", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{30, "Brasil", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{31, "Peru", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{32, "Venezuela", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{33, "Congo", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{34, "Africa Oriental", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{35, "Egipto", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{36, "Madagascar", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{37, "Africa del Norte", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{38, "Africa del Sur", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{39, "Australia Oriental", Ficha("Artilleria", 10), 0});
-      tarjetas.push_back(Tarjeta{40, "Indonesia", Ficha("Infanteria", 1), 0});
-      tarjetas.push_back(Tarjeta{41, "Nueva Guinea", Ficha("Caballeria", 5), 0});
-      tarjetas.push_back(Tarjeta{42, "Australia occidental", Ficha("Artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{1, "alaska", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{2, "alberta", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{3, "america central", Ficha("artilleria",10), 0});
+      tarjetas.push_back(Tarjeta{4, "estados unidos orientales", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{5, "groenlandia", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{6, "territorio noroccidental", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{7, "ontario", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{8, "quebec", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{9, "estado unidos occidentales", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{10, "gran bretania", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{11,"islandia", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{12, "europa del norte", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{13, "escandinavia", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{14, "europa del sur", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{15, "ucrania", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{16, "europa occidental", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{17, "afghanistan", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{18, "china", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{19, "india", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{20, "irkutsk", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{21, "japon", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{22, "kamchatka", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{   23, "medio Oriente", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{24, "mongolia", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{25, "siam", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{26, "siberia", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{27, "ural", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{28, "yakutsk", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{29, "argentina", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{30, "brasil", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{31, "peru", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{32, "venezuela", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{33, "congo", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{34, "africa Oriental", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{35, "egipto", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{36, "madagascar", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{37, "africa del Norte", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{38, "africa del Sur", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{39, "australia Oriental", Ficha("artilleria", 10), 0});
+      tarjetas.push_back(Tarjeta{40, "indonesia", Ficha("infanteria", 1), 0});
+      tarjetas.push_back(Tarjeta{41, "nueva Guinea", Ficha("caballeria", 5), 0});
+      tarjetas.push_back(Tarjeta{42, "australia occidental", Ficha("artilleria", 10), 0});
 
 
       comodines.push_back(Comodin{1, 0});
@@ -158,7 +155,7 @@ void Risk::inicializar(){
     std::cout<<"(Inicializacion satisfactoria) El juego se ha inicializado correctamente!"<<std::endl<<std::endl;
     std::cout<<"Ingrese la cantidad de jugadores: ";
     std::cin>>cantidadJugadores;
-    if(cantidadJugadores==2||cantidadJugadores>6){
+    if(cantidadJugadores<2||cantidadJugadores>6){
       std::cout<<"No cumple la cantidad de jugadores necesarios"<<std::endl<<std::endl;
       inicio_J=false;
       return;
@@ -315,7 +312,7 @@ void Risk::inicializar(){
                 itdorJugadores->setCartas(itdorJugadores->getCartas()+1);
 
                       for (std::list<Tarjeta>::iterator itdorTarjeta = tarjetas.begin(); itdorTarjeta != tarjetas.end(); itdorTarjeta++) {
-                          if(itdorTarjeta->getIdTarjeta() == consolaPais) {
+                          if(itdorTarjeta->getIdTarjeta() == consolaPais && itdorTarjeta->getColorOcupacion()==0) {
                               itdorTarjeta->setColorOcupacion(itdorJugadores->getColor());
                               itdorTarjeta->getColorOcupacion();
 
@@ -1064,13 +1061,13 @@ int Risk::lanzarDado() {
 
         }else{
 
-            archivo<< "Cantidad de jugadores: "<< cantidadJugadores <<std::endl;
+            archivo<< "cantidad de jugadores: "<< cantidadJugadores <<std::endl;
 
             for (std::list<Jugador>::iterator itdorJug = jugadores.begin(); itdorJug != jugadores.end();++itdorJug) {
-                archivo << "idJugador: " << itdorJug->getIdJugador()<< std::endl;
+                archivo << "id jugador: " << itdorJug->getIdJugador()<< std::endl;
                 archivo << "nombre: " <<itdorJug->getNombre()<<std::endl;
                 archivo << "color: " <<itdorJug->getColor()<<std::endl;
-                archivo << "unidadesInfanteria: "<<itdorJug->getUnidadesInfanteria()<<std::endl;
+                archivo << "unidades de infanteria: "<<itdorJug->getUnidadesInfanteria()<<std::endl;
             }
 
             for (std::list<Continente>::iterator itdorCont = continentes.begin(); itdorCont != continentes.end();++itdorCont) {
@@ -1113,9 +1110,9 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
 
     std::string linea;
     while (std::getline(archivo, linea)) {
-        if (linea.find("Cantidad de jugadores:") != std::string::npos) {
+        if (linea.find("cantidad de jugadores:") != std::string::npos) {
             cantidadJugadores = std::stoi(linea.substr(linea.find(":") + 1));
-        } else if (linea.find("idJugador:") != std::string::npos) {
+        } else if (linea.find("id jugador:") != std::string::npos) {
             Jugador jugador;
             jugador.setIdJugador(std::stoi(linea.substr(linea.find(":") + 1)));
 
@@ -1130,7 +1127,7 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
 
             jugadores.push_back(jugador);
 
-        } else  if (linea.find("id de Continente:") != std::string::npos) {
+        } else  if (linea.find("id de continente:") != std::string::npos) {
             Continente continenteActual;
             continenteActual.setIdContinente(std::stoi(linea.substr(linea.find(":") + 1)));
 
@@ -1138,7 +1135,7 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
             continenteActual.setNombreContinente(linea.substr(linea.find(":") + 1));
             continentes.push_back( continenteActual);
         }
-        else if (linea.find("id Pais:") != std::string::npos) {
+        else if (linea.find("id pais:") != std::string::npos) {
             // Procesar un nuevo país
             Pais paisActual;
             paisActual.setIdPais(std::stoi(linea.substr(linea.find(":") + 1)));
@@ -1155,7 +1152,7 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
             bool flagColindantes = true;
             while (flagColindantes) {
                 std::getline(archivo, linea);
-                if (linea.find("Paises colindantes:") != std::string::npos) {
+                if (linea.find("paises colindantes:") != std::string::npos) {
                     std::string colindantes = linea.substr(linea.find(":") + 1);
                     std::istringstream ss(colindantes);
                     std::string colindante;
@@ -1211,7 +1208,7 @@ void Risk::inicializarArchivo(std::string nombreArchivo) {
 
         }
 
-else if (linea.find("id de Tarjeta:") != std::string::npos){
+else if (linea.find("id de tarjeta:") != std::string::npos){
 
             Tarjeta tarjeta;
             tarjeta.setIdTarjeta(std::stoi(linea.substr(linea.find(":") + 1)));
@@ -1224,13 +1221,13 @@ else if (linea.find("id de Tarjeta:") != std::string::npos){
 
 
 
-            if(linea=="Infanteria"){
+            if(linea=="infanteria"){
                 ficha.setNombre(linea);
                 ficha.setInfanterias(1);
-            }else if(linea=="Caballeria"){
+            }else if(linea=="caballeria"){
                 ficha.setNombre(linea);
                 ficha.setInfanterias(5);
-            }else if(linea=="Artilleria"){
+            }else if(linea=="artilleria"){
                 ficha.setNombre(linea);
                 ficha.setInfanterias(10);
             }
@@ -1241,7 +1238,7 @@ else if (linea.find("id de Tarjeta:") != std::string::npos){
             tarjeta.setColorOcupacion(std::stoi(linea.substr(linea.find(":") + 1)));
 
             tarjetas.push_back(tarjeta);
-        }else if(linea.find("Id del comodin:") != std::string::npos){
+        }else if(linea.find("id del comodin:") != std::string::npos){
             Comodin comodin;
             comodin.setIdComodin(std::stoi(linea.substr(linea.find(":") + 1)));
 
@@ -1265,6 +1262,277 @@ else if (linea.find("id de Tarjeta:") != std::string::npos){
 
 
 }
+
+
+int calcularFrecuenciaCaracter(const std::string& cadena, char caracter) {
+    int frecuencia = 0;
+
+    for (char c : cadena) {
+        if (c == caracter) {
+            frecuencia++;
+        }
+    }
+
+    return frecuencia;
+}
+
+
+void Risk::guardarArchivoBinario(std::string nombreArchivo) {
+
+    int cantidadJugadores = jugadores.size();
+    std::string archivo;
+    archivo = "cantidad de jugadores: " + std::to_string(jugadores.size()) + "\n";
+
+    for (std::list<Jugador>::iterator itdorJug = jugadores.begin(); itdorJug != jugadores.end(); ++itdorJug) {
+        archivo += "id jugador: " + std::to_string(itdorJug->getIdJugador()) + "\n";
+        archivo += "nombre: " + itdorJug->getNombre() + "\n";
+        archivo += "color: " + std::to_string(itdorJug->getColor()) + "\n";
+        archivo += "unidades infanteria: " + std::to_string(itdorJug->getUnidadesInfanteria()) + "\n";
+    }
+
+    for (std::list<Continente>::iterator itdorCont = continentes.begin(); itdorCont != continentes.end(); ++itdorCont) {
+        archivo += itdorCont->displayInfo() + "\n";
+    }
+
+    for (std::list<Tarjeta>::iterator itdorTarjeta = tarjetas.begin(); itdorTarjeta != tarjetas.end(); ++itdorTarjeta) {
+        archivo += itdorTarjeta->displayInfo() + "\n";
+    }
+
+    for (std::list<Comodin>::iterator itdorComodin = comodines.begin();
+         itdorComodin != comodines.end(); ++itdorComodin) {
+        archivo += itdorComodin->displayInfo() + "\n";
+    }
+    std::cout<<archivo;
+//DECLARAR ARREGLOS
+    int frecuencias[40];
+    char caracteres[40];
+    ArbolHuffman();
+
+    //
+    std::pair<std::string, int> myPair;
+    std::deque<std::pair<std::string, int>> pairDeque;
+    // CARACTERES
+    char caracter_a = 'a';
+    char caracter_b = 'b';
+    char caracter_c = 'c';
+    char caracter_d = 'd';
+    char caracter_e = 'e';
+    char caracter_f = 'f';
+    char caracter_g = 'g';
+    char caracter_h = 'h';
+    char caracter_i = 'i';
+    char caracter_j = 'j';
+    char caracter_k = 'k';
+    char caracter_l = 'l';
+    char caracter_m = 'm';
+    char caracter_n = 'n';
+    char caracter_o = 'o';
+    char caracter_p = 'p';
+    char caracter_q = 'q';
+    char caracter_r = 'r';
+    char caracter_s = 's';
+    char caracter_t = 't';
+    char caracter_u = 'u';
+    char caracter_v = 'v';
+    char caracter_w = 'w';
+    char caracter_x = 'x';
+    char caracter_y = 'y';
+    char caracter_z = 'z';
+    char caracter_espacio = ' ';
+    char caracter_saltoLinea = '\n';
+    char caracter_dospuntos = ':';
+    char caracter_coma = ',';
+    char caracter_uno = '1';
+    char caracter_dos = '2';
+    char caracter_tres = '3';
+    char caracter_cuatro = '4';
+    char caracter_cinco = '5';
+    char caracter_seis = '6';
+    char caracter_siete = '7';
+    char caracter_ocho = '8';
+    char caracter_nueve = '9';
+    char caracter_cero = '0';
+
+    int frecuencia_a = calcularFrecuenciaCaracter(archivo, caracter_a);
+    int frecuencia_b = calcularFrecuenciaCaracter(archivo, caracter_b);
+    int frecuencia_c = calcularFrecuenciaCaracter(archivo, caracter_c);
+    int frecuencia_d = calcularFrecuenciaCaracter(archivo, caracter_d);
+    int frecuencia_e = calcularFrecuenciaCaracter(archivo, caracter_e);
+    int frecuencia_f = calcularFrecuenciaCaracter(archivo, caracter_f);
+    int frecuencia_g = calcularFrecuenciaCaracter(archivo, caracter_g);
+    int frecuencia_h = calcularFrecuenciaCaracter(archivo, caracter_h);
+    int frecuencia_i = calcularFrecuenciaCaracter(archivo, caracter_i);
+    int frecuencia_j = calcularFrecuenciaCaracter(archivo, caracter_j);
+    int frecuencia_k = calcularFrecuenciaCaracter(archivo, caracter_k);
+    int frecuencia_l = calcularFrecuenciaCaracter(archivo, caracter_l);
+    int frecuencia_m = calcularFrecuenciaCaracter(archivo, caracter_m);
+    int frecuencia_n = calcularFrecuenciaCaracter(archivo, caracter_n);
+    int frecuencia_o = calcularFrecuenciaCaracter(archivo, caracter_o);
+    int frecuencia_p = calcularFrecuenciaCaracter(archivo, caracter_p);
+    int frecuencia_q = calcularFrecuenciaCaracter(archivo, caracter_q);
+    int frecuencia_r = calcularFrecuenciaCaracter(archivo, caracter_r);
+    int frecuencia_s = calcularFrecuenciaCaracter(archivo, caracter_s);
+    int frecuencia_t = calcularFrecuenciaCaracter(archivo, caracter_t);
+    int frecuencia_u = calcularFrecuenciaCaracter(archivo, caracter_u);
+    int frecuencia_v = calcularFrecuenciaCaracter(archivo, caracter_v);
+    int frecuencia_w = calcularFrecuenciaCaracter(archivo, caracter_w);
+    int frecuencia_x = calcularFrecuenciaCaracter(archivo, caracter_x);
+    int frecuencia_y = calcularFrecuenciaCaracter(archivo, caracter_y);
+    int frecuencia_z = calcularFrecuenciaCaracter(archivo, caracter_z);
+    int frecuencia_espacio = calcularFrecuenciaCaracter(archivo, caracter_espacio);
+    int frecuencia_saltoLinea = calcularFrecuenciaCaracter(archivo, caracter_saltoLinea);
+    int frecuencia_dospuntos = calcularFrecuenciaCaracter(archivo, caracter_dospuntos);
+    int frecuencia_coma = calcularFrecuenciaCaracter(archivo, caracter_coma);
+    int frecuencia_uno = calcularFrecuenciaCaracter(archivo, caracter_uno);
+    int frecuencia_dos = calcularFrecuenciaCaracter(archivo, caracter_dos);
+    int frecuencia_tres = calcularFrecuenciaCaracter(archivo, caracter_tres);
+    int frecuencia_cuatro = calcularFrecuenciaCaracter(archivo, caracter_cuatro);
+    int frecuencia_cinco = calcularFrecuenciaCaracter(archivo, caracter_cinco);
+    int frecuencia_seis = calcularFrecuenciaCaracter(archivo, caracter_seis);
+    int frecuencia_siete = calcularFrecuenciaCaracter(archivo, caracter_siete);
+    int frecuencia_ocho= calcularFrecuenciaCaracter(archivo, caracter_ocho);
+    int frecuencia_nueve = calcularFrecuenciaCaracter(archivo, caracter_nueve);
+    int frecuencia_cero = calcularFrecuenciaCaracter(archivo, caracter_cero);
+
+
+    caracteres[0]={caracter_a};
+    caracteres[1]={caracter_b};
+    caracteres[2]={caracter_c};
+    caracteres[3]={caracter_d};
+    caracteres[4]={caracter_e};
+    caracteres[5]={caracter_f};
+    caracteres[6]={caracter_g};
+    caracteres[7]={caracter_h};
+    caracteres[8]={caracter_i};
+    caracteres[9]={caracter_j};
+    caracteres[10]={caracter_k};
+    caracteres[11]={caracter_l};
+    caracteres[12]={caracter_m};
+    caracteres[13]={caracter_n};
+    caracteres[14]={caracter_o};
+    caracteres[15]={caracter_p};
+    caracteres[16]={caracter_q};
+    caracteres[17]={caracter_r};
+    caracteres[18]={caracter_s};
+    caracteres[19]={caracter_t};
+    caracteres[20]={caracter_u};
+    caracteres[21]={caracter_v};
+    caracteres[22]={caracter_w};
+    caracteres[23]={caracter_x};
+    caracteres[24]={caracter_y};
+    caracteres[25]={caracter_z};
+    caracteres[26]={caracter_espacio};
+    caracteres[27]={caracter_saltoLinea};
+    caracteres[28]={caracter_dospuntos};
+    caracteres[29]={caracter_coma};
+    caracteres[30]={caracter_uno};
+    caracteres[31]={caracter_dos};
+    caracteres[32]={caracter_tres};
+    caracteres[33]={caracter_cuatro};
+    caracteres[34]={caracter_cinco};
+    caracteres[35]={caracter_seis};
+    caracteres[36]={caracter_siete};
+    caracteres[37]={caracter_ocho};
+    caracteres[38]={caracter_nueve};
+    caracteres[39]={caracter_cero};
+
+
+    //Meter datos por extensión de las frecuencias
+
+    frecuencias[0]={frecuencia_a};
+    frecuencias[1]={frecuencia_b};
+    frecuencias[2]={frecuencia_c};
+    frecuencias[3]={frecuencia_d};
+    frecuencias[4]={frecuencia_e};
+    frecuencias[5]={frecuencia_f};
+    frecuencias[6]={frecuencia_g};
+    frecuencias[7]={frecuencia_h};
+    frecuencias[8]={frecuencia_i};
+    frecuencias[9]={frecuencia_j};
+    frecuencias[10]={frecuencia_k};
+    frecuencias[11]={frecuencia_l};
+    frecuencias[12]={frecuencia_m};
+    frecuencias[13]={frecuencia_n};
+    frecuencias[14]={frecuencia_o};
+    frecuencias[15]={frecuencia_p};
+    frecuencias[16]={frecuencia_q};
+    frecuencias[17]={frecuencia_r};
+    frecuencias[18]={frecuencia_s};
+    frecuencias[19]={frecuencia_t};
+    frecuencias[20]={frecuencia_u};
+    frecuencias[21]={frecuencia_v};
+    frecuencias[22]={frecuencia_w};
+    frecuencias[23]={frecuencia_x};
+    frecuencias[24]={frecuencia_y};
+    frecuencias[25]={frecuencia_z};
+    frecuencias[26]={frecuencia_espacio};
+    frecuencias[27]={frecuencia_saltoLinea};
+    frecuencias[28]={frecuencia_dospuntos};
+    frecuencias[29]={frecuencia_coma};
+    frecuencias[30]={frecuencia_uno};
+    frecuencias[31]={frecuencia_dos};
+    frecuencias[32]={frecuencia_tres};
+    frecuencias[33]={frecuencia_cuatro};
+    frecuencias[34]={frecuencia_cinco};
+    frecuencias[35]={frecuencia_seis};
+    frecuencias[36]={frecuencia_siete};
+    frecuencias[37]={frecuencia_ocho};
+    frecuencias[38]={frecuencia_nueve};
+    frecuencias[39]={frecuencia_cero};
+
+    for (int i = 0; i < 40; i++) {
+        for (int j = i + 1; j < 40; j++) {
+            int temporal = 0;
+            char caracterTemporal;
+            if (frecuencias[i] > frecuencias[j]) {
+                temporal = frecuencias[i];
+                caracterTemporal = caracteres[i];
+                frecuencias[i] = frecuencias[j];
+                caracteres[i] = caracteres[j];
+                frecuencias[j] = temporal;
+                caracteres[j] = caracterTemporal;
+            }
+        }
+    }
+
+    for (int i = 0; i < 39; i++) {
+        myPair = {std::string(1, caracteres[i]), frecuencias[i]};
+        if(myPair.second == 0){
+
+        }else{
+            pairDeque.push_back(myPair);
+        }
+
+    }
+
+    // Imprimir el deque
+    for (int i = 0; i < pairDeque.size(); i++) {
+        std::pair<std::string, int> element = pairDeque[i];
+        if (element.first == "\n") {
+            std::cout << "salto de linea: " << element.second << "\n";
+        } else if (element.first == " ") {
+            std::cout << "espacio: " << element.second << "\n";
+        } else {
+            std::cout << element.first << ": " << element.second << "\n";
+        }
+    }
+
+
+    ArbolHuffman arbol;
+    arbol.llenarArbol(pairDeque); // Utilizas la instancia de ArbolHuffman creada
+
+    std::string binario = arbol.codificarTexto(archivo);
+    std::cout<<binario;
+
+
+
+
+  return;
+
+
+    }
+
+
 
 
 

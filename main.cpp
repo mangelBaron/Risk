@@ -9,6 +9,7 @@
 #include "Pais.h"
 #include "Continente.h"
 #include "Risk.h"
+#include "ArbolHuffman.h"
 
 std::string consola;
 
@@ -143,7 +144,7 @@ Risk1.turno(numeroTurno);
         }else if(consolaComprimido =="GuardarComprimido" && nombreArchivoComprimido == consolaCopia3){
 
 
-
+            Risk1.guardarArchivoBinario(nombreArchivoComprimido);
 
 
         }else if(consola =="costo_conquista"){

@@ -8,8 +8,8 @@
 std::string Continente::displayInfo() {
     std::string info;
 
-    info = "id de Continente: " + std::to_string(idContinente) + "\n" +
-           "Nombre Continente: " + nombreContinente + "\n";
+    info = "id de continente: " + std::to_string(idContinente) + "\n" +
+           "nombre continente: " + nombreContinente + "\n";
 
     for (std::list<Pais>::iterator it = paises.begin(); it != paises.end(); ++it) {
         info += it->displayInfo() + "\n";
